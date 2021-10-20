@@ -1,0 +1,22 @@
+version: '{build}'
+skip_tags: true
+environment:
+  matrix:
+    - nodejs_version: 'LTS'
+  COVERALLS_REPO_TOKEN:
+    secure: HP5P5B5P0FeTmGzimeUPP1ewnG8DhJPQptQI+HhGNJu4GJDSIa/fUnMu8ma7voli
+init:
+  - git config --global core.autocrlf input
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - yarn install --ignore-scripts
+build: off
+test_script:
+  - node --version
+  - yarn test
+  - yarn build
+on_success:
+  - yarn run publish:code-coverage
+cache:
+  - node_modules -> package.json
+  

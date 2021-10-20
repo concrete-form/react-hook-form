@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "target": "es6",
+    "declaration": true,
+    "noEmit": false,
+    "outDir": "dist",
+  },
+  "include": [
+    "src/*"
+  ],
+  "exclude": [
+    "__tests__",
+    "__snapshots__",
+    "**/*.test.{ts,tsx}",
+    "**/*.spec.{ts,tsx}",
+    "src/react-app-env.d.ts",
+    "src/setupTests.ts"
+  ]
+}

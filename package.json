@@ -1,0 +1,75 @@
+{
+  "name": "@concrete-form/addon-react-hook-form",
+  "version": "0.0.1",
+  "description": "React Hook Form addon for Concrete form",
+  "author": "Kevin Gilbert",
+  "repository": "concrete-form/addon-react-hook-form",
+  "private": false,
+  "license": "MIT",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "postinstall": "yarn build && cd demo && yarn install",
+    "build:clean": "rimraf dist",
+    "build:transpile": "tsc --project tsconfig.build.json",
+    "build": "yarn build:clean && yarn build:transpile",
+    "start": "yarn build && concurrently --kill-others \"yarn build:transpile --watch\" \"cd demo && yarn start\"",
+    "predeploy": "cd demo && yarn build",
+    "deploy": "gh-pages -d demo/build",
+    "publish:dist": "yarn build && node scripts/prepareDist.js && yarn publish dist --access public",
+    "publish:code-coverage": "yarn test:coverage && cat ./coverage/lcov.info | coveralls",
+    "test": "react-scripts test --watchAll=false",
+    "test:watch": "react-scripts test",
+    "test:coverage": "react-scripts test --watchAll=false --coverage",
+    "lint": "eslint src",
+    "lint:fix": "yarn lint --fix"
+  },
+  "peerDependencies": {
+    "react": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "concurrently": "^6.3.0",
+    "coveralls": "^3.1.1",
+    "eslint-plugin-standard-cra": "^1.0.7",
+    "gh-pages": "^3.2.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.4.4",
+    "web-vitals": "^1.0.1"
+  },
+  "resolutions": {
+    "babel-loader": "8.1.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:standard-cra/recommended"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
