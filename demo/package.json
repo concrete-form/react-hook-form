@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
+    "@concrete-form/core": "link:../node_modules/@concrete-form/core",
+    "@concrete-form/react-hook-form": "link:../dist",
     "@testing-library/jest-dom": "link:../node_modules/@testing-library/jest-dom",
     "@testing-library/react": "link:../node_modules/@testing-library/react",
     "@testing-library/user-event": "link:../node_modules/@testing-library/user-event",
@@ -13,9 +15,9 @@
     "@types/react-dom": "link:../node_modules/@types/react-dom",
     "eslint-plugin-standard-cra": "link:../node_modules/eslint-plugin-standard-cra",
     "json5": "^2.2.0",
-    "@concrete-form/core": "link:../dist",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
+    "react-hook-form": "link:../node_modules/react-hook-form",
     "react-scripts": "link:../node_modules/react-scripts",
     "typescript": "link:../node_modules/typescript",
     "web-vitals": "link:../node_modules/web-vitals"

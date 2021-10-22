@@ -4,7 +4,7 @@ environment:
   matrix:
     - nodejs_version: 'LTS'
   COVERALLS_REPO_TOKEN:
-    secure: HP5P5B5P0FeTmGzimeUPP1ewnG8DhJPQptQI+HhGNJu4GJDSIa/fUnMu8ma7voli
+    secure: KlwZ27uvx9uwuJOrM713QCFh4YBBDKkluIImL3VbH/gwCekkBUePBPst/LRsIFV4
 init:
   - git config --global core.autocrlf input
 install:
