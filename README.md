@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <strong>@concrete-form/addon-react-hook-form</strong>
+  <strong>@concrete-form/react-hook-form</strong>
 </p>
 
 ---
@@ -13,26 +13,32 @@
 <div align="center">
   <a href="https://ci.appveyor.com/project/kegi/concrete-form/history">
     <img alt="test coverage" style="margin:3px"
-    src="https://img.shields.io/appveyor/build/kegi/addon-react-hook-form?style=flat-square" />
+    src="https://img.shields.io/appveyor/build/kegi/react-hook-form?style=flat-square" />
   </a>
-  <a href="https://coveralls.io/github/concrete-form/addon-react-hook-form">
+  <a href="https://coveralls.io/github/concrete-form/react-hook-form">
     <img alt="test coverage" style="margin:3px"
-    src="https://img.shields.io/coveralls/github/concrete-form/addon-react-hook-form?style=flat-square" />
+    src="https://img.shields.io/coveralls/github/concrete-form/react-hook-form?style=flat-square" />
   </a>
-  <a href="https://bundlephobia.com/package/@concrete-form/addon-react-hook-form">
+  <a href="https://bundlephobia.com/package/@concrete-form/react-hook-form">
     <img alt="bundle size" style="margin:3px" 
-    src="https://img.shields.io/bundlephobia/min/@concrete-form/addon-react-hook-form?label=size&style=flat-square" />
+    src="https://img.shields.io/bundlephobia/min/@concrete-form/react-hook-form?label=size&style=flat-square" />
   </a>
-  <a href="https://www.npmjs.com/package/@concrete-form/addon-react-hook-form">
+  <a href="https://www.npmjs.com/package/@concrete-form/react-hook-form">
     <img alt="License" style="margin:3px" 
-    src="https://img.shields.io/npm/l/@concrete-form/addon-react-hook-form?color=%23007ec6&style=flat-square" />
+    src="https://img.shields.io/npm/l/@concrete-form/react-hook-form?color=%23007ec6&style=flat-square" />
   </a>
 </div>
 
 ---
 
-## Addon
+## Implementation
 
-[**React Hook Form**](https://react-hook-form.com) addon for [**Concrete form**](https://github.com/concrete-form/concrete-form)
+[**React Hook Form**](https://react-hook-form.com) (V7+) implementation for [**Concrete form**](https://github.com/concrete-form/concrete-form)
 
-This addon is not implemented yet. Poke me if you're curious and want to contribute !
+## Install
+
+```bash
+yarn add @concrete-form/react-hook-form
+# OR
+npm install @concrete-form/react-hook-form
+```
