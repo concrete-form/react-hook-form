@@ -10,7 +10,8 @@ export default class ReactHookFormHandler implements FormHandler {
     return {
       isValid: !!formState.isValid,
       isSubmitting: !!formState.isSubmitting,
-      wasSubmitted: !!formState.isSubmitted,
+      isSubmitted: !!formState.isSubmitted,
+      hasErrors: Object.keys(formState.errors).length > 0,
     }
   }
 

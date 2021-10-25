@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/react-hook-form",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React Hook Form implementation for Concrete form",
   "author": "Kevin Gilbert",
   "repository": "concrete-form/react-hook-form",
@@ -24,13 +24,14 @@
     "lint": "eslint src",
     "lint:fix": "yarn lint --fix"
   },
+  "dependencies": {
+    "@concrete-form/core": "^0.0.7"
+  },
   "peerDependencies": {
-    "@concrete-form/core": ">=0.0.0",
     "react": ">=16.0.0",
     "react-hook-form": ">=7.0.0"
   },
   "devDependencies": {
-    "@concrete-form/core": "^0.0.5",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
