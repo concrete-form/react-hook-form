@@ -1,13 +1,15 @@
 import React from 'react'
 import { ConcreteFormProvider, ConcreteFormProps } from '@concrete-form/core'
-import { FormProvider, UseFormReturn, SubmitHandler } from 'react-hook-form'
+import { FormProvider, UseFormReturn, SubmitHandler, useForm } from 'react-hook-form'
 
 import ReactHookFormHandler from '../ReactHookFormHandler'
 
 type ReactHookFormProps = {
-  form: UseFormReturn<any>
+  form?: UseFormReturn<any>
   onSubmit: SubmitHandler<any>
 } & ConcreteFormProps
+
+const DefaultForm: React.FC<ReactHookFormProps> = props => <Form {...props} form={useForm()} />
 
 const Form: React.FC<ReactHookFormProps> = ({
   form,
@@ -17,6 +19,19 @@ const Form: React.FC<ReactHookFormProps> = ({
   children,
   ...concreteFormConfig
 }) => {
+  if (!form) {
+    return (
+      <DefaultForm
+        onSubmit={onSubmit}
+        formProps={formProps}
+        noValidate={noValidate}
+        {...concreteFormConfig}
+      >
+        { children }
+      </DefaultForm>
+    )
+  }
+
   return (
     <ConcreteFormProvider formHandler={new ReactHookFormHandler(form)} config={concreteFormConfig}>
       <FormProvider {...form}>
