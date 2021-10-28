@@ -45,9 +45,14 @@ export default class ReactHookFormHandler implements FormHandler {
   }
 
   private formatFieldErrors (errors?: Record<string, any>) {
-    return Object.entries(errors?.types || {}).map(([errorType, message]) => {
+    if (!errors) {
+      return []
+    }
+    const types = typeof errors?.types === 'object' ? errors.types : { [errors.type]: errors.message }
+
+    return Object.entries(types).map(([errorType, message]) => {
       // todo : use generic translations when no message is provided
-      return typeof message === 'string' ? message : errorType
+      return typeof message === 'string' && message !== '' ? message : errorType
     }) || []
   }
 }
