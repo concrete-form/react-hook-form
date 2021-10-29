@@ -1,22 +1,65 @@
-# Doc (first draft)
-
+# Doc
 # `<Form />`
 ```jsx
 import { Form } from '@concrete-form/react-hook-form'
+import { useForm } from 'react-hook-form'
 
 const Example = () => {
-  return <Form values={} onSubmit={} {...} />
+  const form = useForm({...})
+  return (
+    <Form form={form} onSubmit={...}>
+      ...
+    </Form>
+  )
 }
 ```
-**RHF** = Reack Hook Form
+
+## Dependencies
+
+| Dependency | Version |
+| --- | --- |
+| `react` | >= 16 |
+| `react-hook-form` | >= 7 |
+
+## Install
+
+```bash
+yarn add @concrete-form/react-hook-form
+# or
+npm install @concrete-form/react-hook-form
+```
 ## Props
 
-  - values
-  - onSubmit
-  - ... all props supported by **RHF** `useForm(...)`*
+| Prop | From | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| `form` | `@concrete-form/react-hook-form` | object | *optional*  | returned by `useForm()` hook. |
+| `onSubmit` | `@concrete-form/react-hook-form` | function | *optional* | React hook form onsubmit callback. Handled by  |
+| `formProps` | `@concrete-form/core` | object | *optional* | props for the `<form>` element |
+| `noValidate` | `@concrete-form/core` | boolean | *optional* | shorthand `formProps` for `novalidate` (default = `true`) |
+| `{...config}` | `@concrete-form/core` |  | *optional* | **Concrete Form** configs (check doc) |
 
-> except "defaultValue" wich is defined as `values`
+<br />
 
-https://react-hook-form.com/api/useform/
+# Get started
+## Initialize your form
 
-> **Note:** If you change the `values` prop, **RHF** `reset()` method will be called internally to reset the cached values.
+You can :
+1) Create your form normally with `useForm` (**recommended**)
+2) Let **Concrete Form** initialize it for you with default settings
+
+If you create the form yourself, don't forget to pass the result of `useForm` like this :
+
+```jsx
+const form = useForm({ ... })
+return <Form form={form} />
+```
+
+## Result
+
+- render a `<form />` element.
+- render a **React hook form** [`FormProvider`](https://react-hook-form.com/api/useformcontext) so you can use [`useFormContext`](https://react-hook-form.com/api/useformcontext)
+- **React hook form** will call `onSubmit` if provided
+
+## Usage
+- You can use any **Concrete form** UI element inside `<Form />`
+- You can use your own controls (check [**React hook form**](https://react-hook-form.com/api) doc)
