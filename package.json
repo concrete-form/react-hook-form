@@ -1,9 +1,12 @@
 {
   "name": "@concrete-form/react-hook-form",
   "version": "0.0.2",
-  "description": "React Hook Form implementation for Concrete form",
   "author": "Kevin Gilbert",
+  "description": "React Hook Form implementation for Concrete form",
+  "keywords": ["form", "react", "react-hook-form", "concrete-form"],
   "repository": "concrete-form/react-hook-form",
+  "homepage": "https://github.com/concrete-form/react-hook-form",
+  "bugs": "https://github.com/concrete-form/react-hook-form/issues",
   "private": false,
   "license": "MIT",
   "module": "./dist/index.js",
