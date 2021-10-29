@@ -17,6 +17,10 @@ delete distPackage.jest
 delete distPackage.eslintConfig
 delete distPackage.browserslist
 
+distPackage.dependencies = Object.fromEntries(
+  Object.entries(distPackage.dependencies ?? {}).filter(([_, dependency]) => !/^[file|link]+:/.test(dependency)),
+)
+
 fs.writeFileSync(path.join(dist, 'package.json'), JSON.stringify(distPackage, undefined, 2))
 
 fs.copyFileSync(path.join(root, 'README.md'), path.join(dist, 'README.md'))
