@@ -6,7 +6,7 @@ import ReactHookFormHandler from '../ReactHookFormHandler'
 
 type ReactHookFormProps = {
   form?: UseFormReturn<any>
-  onSubmit: SubmitHandler<any>
+  onSubmit?: SubmitHandler<any>
 } & ConcreteFormProps
 
 const DefaultForm: React.FC<ReactHookFormProps> = props => <Form {...props} form={useForm()} />
@@ -36,7 +36,7 @@ const Form: React.FC<ReactHookFormProps> = ({
     <ConcreteFormProvider formHandler={new ReactHookFormHandler(form)} config={concreteFormConfig}>
       <FormProvider {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={onSubmit && form.handleSubmit(onSubmit)}
           noValidate={noValidate}
           {...formProps}
         >
