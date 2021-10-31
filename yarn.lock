@@ -1209,10 +1209,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@concrete-form/core@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.9.tgz#4672b44b340309f34c97b1e404d9c4c87e80d346"
-  integrity sha512-LFsJDzpKLbfEKNKnZWeIthPPQIf34TT2MaRkBrC/M66vDw/WUhn0ldlGUWz7gjMKkABFAZc4zObqWnW3QZxY4w==
+"@concrete-form/core@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.10.tgz#81e7ab8dae804485bed1e481b271da429d6660b4"
+  integrity sha512-yYc+XP+C2CFs7uItTNXp+IPWXjCMdzGnL6VwVoJ/duttmj6bJdrLona9UcnAE56vjvb/6D24hwfJ7XPkYcFZhg==
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
