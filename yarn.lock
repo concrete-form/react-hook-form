@@ -1209,10 +1209,12 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@concrete-form/core@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.10.tgz#81e7ab8dae804485bed1e481b271da429d6660b4"
-  integrity sha512-yYc+XP+C2CFs7uItTNXp+IPWXjCMdzGnL6VwVoJ/duttmj6bJdrLona9UcnAE56vjvb/6D24hwfJ7XPkYcFZhg==
+"@concrete-form/core@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.11.tgz#87369b1d4072950ad7d7d03fe7341cf990b1028a"
+  integrity sha512-aQpgMgFHziBAgv0h0Cd163fi2SjgDu9/Av0BvnVq6yBc9iiDqjk0h009qzQ52dzPSdq9r/+pQuoyiklhuSatpA==
+  dependencies:
+    uuid "^8.3.2"
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
@@ -11356,7 +11358,7 @@ uuid@^3.3.2, uuid@^3.4.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
-uuid@^8.3.0:
+uuid@^8.3.0, uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
