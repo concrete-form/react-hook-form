@@ -1,4 +1,3 @@
-import React from 'react'
 import { ConcreteFormProvider, ConcreteFormProps } from '@concrete-form/core'
 import { FormProvider, UseFormReturn, SubmitHandler, useForm } from 'react-hook-form'
 

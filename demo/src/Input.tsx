@@ -1,4 +1,3 @@
-import React from 'react'
 import { useControlProps, useControlState, useFormState, ControlProps } from '@concrete-form/core'
 
 type InputProps = ControlProps & React.InputHTMLAttributes<HTMLInputElement>
