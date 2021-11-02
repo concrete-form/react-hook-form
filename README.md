@@ -19,7 +19,7 @@
     <img alt="test coverage" style="margin:3px"
     src="https://img.shields.io/coveralls/github/concrete-form/react-hook-form?style=flat-square" />
   </a>
-  <img alt="Tree shaking supported"src="https://flat.badgen.net/bundlephobia/tree-shaking/@concrete-form/react-hook-form" style="margin:3px" />
+  <img alt="Tree shaking supported"src="https://img.shields.io/badge/Tree%20shacking-supported-success?style=flat-square" style="margin:3px" />
   <a href="https://www.npmjs.com/package/@concrete-form/react-hook-form">
     <img alt="License" style="margin:3px" 
     src="https://img.shields.io/npm/l/@concrete-form/react-hook-form?color=%23007ec6&style=flat-square&v=2" />
