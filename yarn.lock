@@ -1209,10 +1209,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@concrete-form/core@^0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.18.tgz#e93c386bf6820137da474043f80156c8e0564913"
-  integrity sha512-SHkaloHr/dibiJwsD8SnpHNPgdJQW48othVGCT2cQcWCpfR9KqVoax7MSWK1PqsUT+w0d7BcFaBrxB6yog1zow==
+"@concrete-form/core@^0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.19.tgz#1245414844b7f3f80d5c35746ed45ec32918eb6c"
+  integrity sha512-CFlintVy9PeVnlKBiUMdUkEZize6pMP/ektdsSz+gMFC4UqqhKVdqa/7Ne29wBPDQZFocZrco56GE+hKRiCVog==
   dependencies:
     uuid "^8.3.2"
 
