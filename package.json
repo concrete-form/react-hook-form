@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/react-hook-form",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "author": "Kevin Gilbert",
   "description": "React Hook Form implementation for Concrete form",
   "keywords": [
@@ -39,7 +39,7 @@
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
-    "@concrete-form/core": "^0.0.24"
+    "@concrete-form/core": "^0.0.25"
   },
   "peerDependencies": {
     "react": ">=16.0.0",
@@ -48,7 +48,9 @@
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/plugin-proposal-export-default-from": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/plugin-transform-typescript": "^7.16.1",
+    "@babel/runtime": "^7.16.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
