@@ -10,11 +10,18 @@
     "src/*"
   ],
   "exclude": [
-    "__tests__",
-    "__snapshots__",
-    "**/*.test.{ts,tsx}",
-    "**/*.spec.{ts,tsx}",
-    "src/react-app-env.d.ts",
-    "src/setupTests.ts"
+    "src/setupTests.ts",
+    "**/*.d.ts",
+    "**/__tests__",
+    "**/__snapshots__",
+    "**/*.test.js",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.js",
+    "**/*.spec.ts",
+    "**/*.spec.tsc",
+    "**/*.stories.js",
+    "**/*.stories.ts",
+    "**/*.stories.tsx"
   ]
 }
