@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/react-hook-form",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "author": "Kevin Gilbert",
   "description": "React Hook Form implementation for Concrete form",
   "keywords": [
@@ -14,8 +14,9 @@
   "bugs": "https://github.com/concrete-form/react-hook-form/issues",
   "private": false,
   "license": "MIT",
+  "main": "./dist/cjs/index.js",
   "module": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "postinstall": "yarn build && cd demo && yarn install",
     "build": "yarn build:clean && yarn build:transpile && yarn build:types && yarn build:prepare",
@@ -38,7 +39,7 @@
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
-    "@concrete-form/core": "^0.0.22"
+    "@concrete-form/core": "^0.0.23"
   },
   "peerDependencies": {
     "react": ">=16.0.0",

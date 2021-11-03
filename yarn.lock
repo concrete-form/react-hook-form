@@ -1398,10 +1398,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@concrete-form/core@^0.0.22":
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.22.tgz#035dc5f596cd8395ba324693a5951655129634c9"
-  integrity sha512-fx0IZLOyRxnQEdbRNZmZAdVakBC20qNTBxtAmUbk1f+eOFby1jfc2t0Yy5CcwJnTkBftUHTAulsH/1f93hy5/g==
+"@concrete-form/core@^0.0.23":
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.23.tgz#7d363309dcfd7990791b714e2691313d5e371d60"
+  integrity sha512-zo7u0gHg/Ae60JOnbMkhw9FhVDLVk/RDyNgFVADuDykj8p89SPpkkz4FVkN1U0MAqcET0p9Bq4EZnxWIqOV2jg==
   dependencies:
     uuid "^8.3.2"
 
