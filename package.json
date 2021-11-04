@@ -39,7 +39,7 @@
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
-    "@concrete-form/core": "^0.0.30"
+    "@concrete-form/core": "^0.0.31"
   },
   "peerDependencies": {
     "react": ">=16.0.0",
