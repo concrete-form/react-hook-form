@@ -8,9 +8,7 @@ export default class ReactHookFormHandler implements FormHandler {
   public getFormState () {
     const formState = this.reactHookFormContext.formState
     return {
-      isValid: !!formState.isValid,
       isSubmitting: !!formState.isSubmitting,
-      isSubmitted: !!formState.isSubmitted,
       hasErrors: Object.keys(formState.errors).length > 0,
     }
   }
@@ -24,7 +22,6 @@ export default class ReactHookFormHandler implements FormHandler {
     return {
       value: this.reactHookFormContext.getValues(name),
       errors: this.formatFieldErrors(formState.errors[name]),
-      isTouched: !!formState.touchedFields[name],
     }
   }
 

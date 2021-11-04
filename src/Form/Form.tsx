@@ -1,3 +1,4 @@
+import React, { useMemo } from 'react'
 import { ConcreteFormProvider, ConcreteFormProps } from '@concrete-form/core'
 import { FormProvider, UseFormReturn, SubmitHandler, useForm } from 'react-hook-form'
 
@@ -18,7 +19,9 @@ const Form: React.FC<ReactHookFormProps> = ({
   children,
   ...concreteFormConfig
 }) => {
-  if (!form) {
+  const formHandler = useMemo(() => form && new ReactHookFormHandler(form), [form])
+
+  if (!form || !formHandler) {
     return (
       <DefaultForm
         onSubmit={onSubmit}
@@ -32,7 +35,7 @@ const Form: React.FC<ReactHookFormProps> = ({
   }
 
   return (
-    <ConcreteFormProvider formHandler={new ReactHookFormHandler(form)} config={concreteFormConfig}>
+    <ConcreteFormProvider formHandler={formHandler} config={concreteFormConfig}>
       <FormProvider {...form}>
         <form
           onSubmit={onSubmit && form.handleSubmit(onSubmit)}
