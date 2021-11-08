@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/react-hook-form",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "author": "Kevin Gilbert",
   "description": "React Hook Form implementation for Concrete form",
   "keywords": [
@@ -27,7 +27,7 @@
     "build:umd": "cross-env BABEL_ENV=umd babel --extensions \".js\" dist/ --ignore dist/cjs --out-dir dist/umd --plugins=transform-es2015-modules-umd",
     "build:types": "tsc --project tsconfig.build.json",
     "build:prepare": "node scripts/prepareDist.js",
-    "start": "yarn build && concurrently --kill-others \"yarn build:transpile --watch\" \"cd demo && yarn start\"",
+    "start": "yarn build && concurrently --kill-others \"yarn build:esm --watch\" \"cd demo && yarn start\"",
     "predeploy": "cd demo && yarn build",
     "deploy": "gh-pages -d demo/build",
     "publish:dist": "yarn build && yarn publish dist --access public",
@@ -39,7 +39,7 @@
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
-    "@concrete-form/core": "^0.0.34"
+    "@concrete-form/core": "^0.0.35"
   },
   "peerDependencies": {
     "react": ">=16.0.0",
@@ -51,6 +51,8 @@
     "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/plugin-transform-typescript": "^7.16.1",
     "@babel/runtime": "^7.16.0",
+    "@concrete-form/html5": "^0.0.7",
+    "@hookform/resolvers": "^2.8.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -70,7 +72,8 @@
     "react-hook-form": "^7.17.5",
     "react-scripts": "4.0.3",
     "typescript": "^4.4.4",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.11"
   },
   "resolutions": {
     "babel-loader": "8.1.0"
