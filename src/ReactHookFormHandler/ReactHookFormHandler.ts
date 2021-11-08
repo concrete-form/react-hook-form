@@ -1,4 +1,4 @@
-import { FormHandler } from '@concrete-form/core'
+import { FormHandler, Translation } from '@concrete-form/core'
 import TranslationKeys from '@concrete-form/core/translation/TranslationKeys.enum'
 import { UseFormReturn } from 'react-hook-form'
 
@@ -44,7 +44,7 @@ export default class ReactHookFormHandler implements FormHandler {
     )
   }
 
-  private formatFieldErrors (name: string, errors?: Record<string, any>) {
+  private formatFieldErrors (name: string, errors?: Record<string, any>): Translation[] {
     if (!errors) {
       return []
     }
@@ -61,24 +61,21 @@ export default class ReactHookFormHandler implements FormHandler {
   /**
    * Translate React Hook Form built-in validations
    */
-  private getGenericErrorMessage (type: string, options: Record<string, string|number>) {
+  private getGenericErrorMessage (type: string, options: Record<string, string|number>): Translation {
+    const meta = { from: 'react-hook-form', args: { type, options } }
     switch (type) {
       case 'required':
-        return { key: TranslationKeys.REQUIRED, meta: { type } }
+        return { key: TranslationKeys.REQUIRED, meta }
       case 'minLength':
-        return { key: TranslationKeys.STRING_MIN, values: { min: options.minLength }, meta: { type } }
+        return { key: TranslationKeys.MINLENGTH, values: { min: String(options.minLength) }, meta }
       case 'maxLength':
-        return { key: TranslationKeys.STRING_MAX, values: { max: options.maxLength }, meta: { type } }
+        return { key: TranslationKeys.MAXLENGTH, values: { max: String(options.maxLength) }, meta }
       case 'min':
-        return { key: TranslationKeys.NUMBER_MIN, values: { min: options.min }, meta: { type } }
+        return { key: TranslationKeys.MIN, values: { min: String(options.min) }, meta }
       case 'max':
-        return { key: TranslationKeys.NUMBER_MAX, values: { max: options.max }, meta: { type } }
-      case 'pattern':
-        return { key: TranslationKeys.DEFAULT, meta: { type } }
-      case 'validate':
-        return { key: TranslationKeys.DEFAULT, meta: { type } }
+        return { key: TranslationKeys.MAX, values: { max: String(options.max) }, meta }
       default:
-        return { key: TranslationKeys.DEFAULT, meta: { type } }
+        return { key: TranslationKeys.DEFAULT, meta }
     }
   }
 }
