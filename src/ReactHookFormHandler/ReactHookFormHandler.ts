@@ -1,5 +1,4 @@
-import { FormHandler, Translation } from '@concrete-form/core'
-import TranslationKeys from '@concrete-form/core/translation/TranslationKeys.enum'
+import { FormHandler, Translation, TranslationKeys } from '@concrete-form/core'
 import { UseFormReturn } from 'react-hook-form'
 
 export default class ReactHookFormHandler implements FormHandler {
