@@ -5,7 +5,12 @@
   "private": true,
   "devDependencies": {
     "@concrete-form/core": "link:../node_modules/@concrete-form/core",
+    "@concrete-form/html5": "link:../node_modules/@concrete-form/html5",
     "@concrete-form/react-hook-form": "link:../dist",
+    "@hookform/resolvers": "link:../node_modules/@hookform/resolvers",
+    "yup": "link:../node_modules/yup",
+    "joi": "link:../node_modules/joi",
+    "zod": "link:../node_modules/zod",
     "@testing-library/jest-dom": "link:../node_modules/@testing-library/jest-dom",
     "@testing-library/react": "link:../node_modules/@testing-library/react",
     "@testing-library/user-event": "link:../node_modules/@testing-library/user-event",

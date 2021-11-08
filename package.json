@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/react-hook-form",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "author": "Kevin Gilbert",
   "description": "React Hook Form implementation for Concrete form",
   "keywords": [
@@ -51,7 +51,7 @@
     "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/plugin-transform-typescript": "^7.16.1",
     "@babel/runtime": "^7.16.0",
-    "@concrete-form/html5": "^0.0.7",
+    "@concrete-form/html5": "^0.0.8",
     "@hookform/resolvers": "^2.8.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -67,13 +67,15 @@
     "cross-env": "^7.0.3",
     "eslint-plugin-standard-cra": "^1.0.7",
     "gh-pages": "^3.2.3",
+    "joi": "^17.4.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.17.5",
     "react-scripts": "4.0.3",
     "typescript": "^4.4.4",
     "web-vitals": "^1.0.1",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "zod": "^3.11.6"
   },
   "resolutions": {
     "babel-loader": "8.1.0"

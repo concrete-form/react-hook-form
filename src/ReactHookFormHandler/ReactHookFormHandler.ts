@@ -53,7 +53,7 @@ export default class ReactHookFormHandler implements FormHandler {
       if (message === true) {
         return this.getGenericErrorMessage(errorType, this.cachedControlOptions[name] ?? {})
       }
-      return typeof message === 'string' ? message : { key: TranslationKeys.DEFAULT, meta: { error: message } }
+      return message as any
     }) || []
   }
 
