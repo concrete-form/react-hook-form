@@ -6,9 +6,9 @@ import Zod from './Zod'
 
 const App: React.FC = () => {
   // return <HtmlValidation />
-  // return <Yup />
+  return <Yup />
   // return <Joi />
-  return <Zod />
+  // return <Zod />
 }
 
 export default App

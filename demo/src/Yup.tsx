@@ -1,9 +1,10 @@
-import '@concrete-form/core/setupYupLocale'
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
+import YupTranslator from '@concrete-form/core/YupTranslator'
 import Form from '@concrete-form/react-hook-form'
 import Input from '@concrete-form/html5/Input'
 import SubmitButton from '@concrete-form/html5/SubmitButton'
@@ -11,14 +12,18 @@ import SubmitButton from '@concrete-form/html5/SubmitButton'
 const wait = async (delay: number) => await new Promise(resolve => setTimeout(resolve, delay))
 
 const App: React.FC = () => {
-  const schema = yup.object({
+  const schema = yup.object().shape({
     validationRequired: yup.string().required(),
     validationMinlength: yup.string().min(3),
     validationMaxlength: yup.string().max(3),
     validationMin: yup.number().min(3),
     validationMax: yup.number().max(3),
+    validationLt: yup.number().lessThan(3),
     validationPattern: yup.string().matches(/^[a-z]+$/i),
     validationValidate: yup.string().test('is-foo', (value?: string) => value === 'foo'),
+    foo: yup.object().shape({
+      bar: yup.string().min(5).lowercase(),
+    }).required(),
   }).required()
 
   const form = useForm({
@@ -28,12 +33,17 @@ const App: React.FC = () => {
       validationMaxlength: 'test',
       validationMin: 2,
       validationMax: 5,
+      validationLt: 3,
       validationPattern: '0',
       validationValidate: 't',
+      foo: {
+        bar: 'f',
+      },
     },
     mode: 'onTouched',
     criteriaMode: 'all',
-    resolver: yupResolver(schema),
+    resolver: yupResolver(new YupTranslator(schema)),
+    // resolver: yupResolver(schema),
   })
 
   const onSubmit = async (data: any) => {
@@ -82,6 +92,12 @@ const App: React.FC = () => {
         />
 
         <Input
+          name="validationLt"
+          placeholder="Validation < 3"
+          type="number"
+        />
+
+        <Input
           name="validationPattern"
           placeholder="Validation Pattern (/^[a-z]+$/i)"
         />
@@ -89,6 +105,11 @@ const App: React.FC = () => {
         <Input
           name="validationValidate"
           placeholder="Validation Validate (need to be &quot;foo&quot;)"
+        />
+
+        <Input
+          name="foo.bar"
+          placeholder="foo.bar"
         />
 
         <br />
