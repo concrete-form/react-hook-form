@@ -1,5 +1,6 @@
 import { FormHandler, Translation, TranslationKeys } from '@concrete-form/core'
 import { UseFormReturn } from 'react-hook-form'
+import get from '../utils/get'
 
 export default class ReactHookFormHandler implements FormHandler {
   private cachedControlOptions: Record<string, any> = {}
@@ -21,9 +22,10 @@ export default class ReactHookFormHandler implements FormHandler {
 
   public getControlState (name: string) {
     const formState = this.reactHookFormContext.formState
+
     return {
       value: this.reactHookFormContext.getValues(name),
-      errors: this.formatFieldErrors(name, formState.errors[name]),
+      errors: this.formatFieldErrors(name, get(formState.errors, name)),
     }
   }
 
