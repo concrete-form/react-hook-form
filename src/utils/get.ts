@@ -9,14 +9,11 @@ const get = <T>(obj: T, path: string, defaultValue?: unknown) => {
       (result, key) => (result == null ? result : result[key]),
       obj,
     )
-
-    return result === undefined || result === obj
-      ? obj[path as keyof T] === undefined
-        ? defaultValue
-        : obj[path as keyof T]
-      : result
+    if (result === undefined || result === obj) {
+      return obj[path as keyof T] === undefined ? defaultValue : obj[path as keyof T]
+    }
+    return result
   }
-
   return undefined
 }
 
