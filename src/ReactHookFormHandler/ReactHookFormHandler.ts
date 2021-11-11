@@ -52,11 +52,11 @@ export default class ReactHookFormHandler implements FormHandler {
     const types = typeof errors?.types === 'object' ? errors.types : { [errors.type]: errors.message }
 
     return Object.entries(types).map(([errorType, message]) => {
-      if (message === true) {
+      if (message === true || message === '') {
         return this.getGenericErrorMessage(errorType, this.cachedControlOptions[name] ?? {})
       }
       return message as any
-    }) || []
+    })
   }
 
   /**
