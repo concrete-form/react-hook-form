@@ -15,7 +15,7 @@ const Form: React.FC<ReactHookFormProps> = ({
   form,
   onSubmit,
   formProps,
-  noValidate,
+  noValidate = true,
   children,
   ...concreteFormConfig
 }) => {
