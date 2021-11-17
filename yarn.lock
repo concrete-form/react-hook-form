@@ -1431,10 +1431,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@concrete-form/core@^0.0.50":
-  version "0.0.50"
-  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.50.tgz#ef43f89d02be9e7b4716aa70d255bee54fa6f684"
-  integrity sha512-BwO0uUkqGkIypl1+KKji1w4j+rh5ztBjSTPPL97LHSUv0DyO9af18SuPP4X0JlMvfNnO5RgO7hkZRFq4P3SpnA==
+"@concrete-form/core@^0.0.51":
+  version "0.0.51"
+  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-0.0.51.tgz#3a74d5f363ab66dd00fe7b395b71a8704aa041c8"
+  integrity sha512-6QMV7t3pOezrmH64BorKZeqbcEIHLxv8yuLmrrU7IUajbVPl3fjsgSQZPfOpfr4elKa6uCOtPEoh615aoLR4oA==
 
 "@concrete-form/html5@^0.0.8":
   version "0.0.8"
