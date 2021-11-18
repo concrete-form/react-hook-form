@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/react-hook-form",
-  "version": "0.0.48",
+  "version": "0.0.49",
   "author": "Kevin Gilbert",
   "description": "React Hook Form implementation for Concrete form",
   "keywords": [
@@ -40,7 +40,7 @@
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
-    "@concrete-form/core": "^0.0.57"
+    "@concrete-form/core": "^0.0.58"
   },
   "peerDependencies": {
     "react": ">=16.0.0",
