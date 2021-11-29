@@ -45,12 +45,14 @@ export default class ReactHookFormHandler implements FormHandler {
     )
   }
 
-  private formatFieldErrors (name: string, errors?: Record<string, any>): Translation[] {
+  private formatFieldErrors (name: string, errors?: any): Translation[] {
     if (!errors) {
       return []
     }
+    if (Array.isArray(errors)) {
+      return errors.map(error => this.formatFieldErrors(name, error)).flat()
+    }
     const types = typeof errors?.types === 'object' ? errors.types : { [errors.type]: errors.message }
-
     return Object.entries(types).map(([errorType, message]) => {
       if (message === true || message === '') {
         return this.getGenericErrorMessage(errorType, this.cachedControlOptions[name] ?? {})

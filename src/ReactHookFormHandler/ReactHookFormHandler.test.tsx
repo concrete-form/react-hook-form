@@ -1,5 +1,8 @@
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import YupTranslator from '@concrete-form/core/YupTranslator'
+import * as Yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 import renderFormAndGetHandler from '../testkit/renderFormAndGetHandler'
 import RequiredInput from '../testkit/RequiredInput'
@@ -116,6 +119,19 @@ describe('ReactHookFormHandler', () => {
 
       await waitFor(() => {
         expect(formHandler.getControlState('multiple').errors).toHaveLength(2)
+      })
+    })
+
+    it('handle arrays of errors', async () => {
+      const schema = new YupTranslator(Yup.object({
+        test: Yup.array().of(Yup.string().min(3, 'test-error')).min(1).required(),
+      }))
+      const formHandler = renderFormAndGetHandler(undefined, { criteriaMode: 'all', resolver: yupResolver(new YupTranslator(schema)) })
+      formHandler.getControlProps('test')
+      formHandler.setFieldValue('test', ['fo', 'ba'], true)
+
+      await waitFor(() => {
+        expect(formHandler.getControlState('test').errors).toEqual(['test-error', 'test-error'])
       })
     })
 
