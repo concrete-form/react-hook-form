@@ -124,14 +124,27 @@ describe('ReactHookFormHandler', () => {
 
     it('handle arrays of errors', async () => {
       const schema = new YupTranslator(Yup.object({
-        test: Yup.array().of(Yup.string().min(3, 'test-error')).min(1).required(),
+        test: Yup.array().of(Yup.string().min(3, 'err1').max(3, 'err2')).min(1).required(),
+      }))
+      const formHandler = renderFormAndGetHandler(undefined, { criteriaMode: 'all', resolver: yupResolver(new YupTranslator(schema)) })
+      formHandler.getControlProps('test')
+      formHandler.setFieldValue('test', ['fo', 'barr'], true)
+
+      await waitFor(() => {
+        expect(formHandler.getControlState('test').errors).toEqual(['err1', 'err2'])
+      })
+    })
+
+    it('ignores duplicated errors', async () => {
+      const schema = new YupTranslator(Yup.object({
+        test: Yup.array().of(Yup.string().min(3, 'err1')).min(1).required(),
       }))
       const formHandler = renderFormAndGetHandler(undefined, { criteriaMode: 'all', resolver: yupResolver(new YupTranslator(schema)) })
       formHandler.getControlProps('test')
       formHandler.setFieldValue('test', ['fo', 'ba'], true)
 
       await waitFor(() => {
-        expect(formHandler.getControlState('test').errors).toEqual(['test-error', 'test-error'])
+        expect(formHandler.getControlState('test').errors).toEqual(['err1'])
       })
     })
 

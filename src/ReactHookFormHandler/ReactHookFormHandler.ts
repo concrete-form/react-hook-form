@@ -25,7 +25,9 @@ export default class ReactHookFormHandler implements FormHandler {
 
     return {
       value: this.reactHookFormContext.getValues(name),
-      errors: this.formatFieldErrors(name, get(formState.errors, name)),
+      errors: this.uniqueErrors(
+        this.formatFieldErrors(name, get(formState.errors, name)),
+      ),
     }
   }
 
@@ -44,6 +46,8 @@ export default class ReactHookFormHandler implements FormHandler {
       },
     )
   }
+
+  private readonly uniqueErrors = (errors: Translation[]) => Array.from(new Set(errors))
 
   private formatFieldErrors (name: string, errors?: any): Translation[] {
     if (!errors) {
