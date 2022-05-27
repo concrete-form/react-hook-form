@@ -27,7 +27,7 @@ describe('Form', () => {
     it('calls onSubmit', async () => {
       const onSubmit = jest.fn()
       render(<Form onSubmit={onSubmit}><button type="submit">submit</button></Form>)
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
 
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalled()
@@ -54,7 +54,7 @@ describe('Form', () => {
     it('calls onSubmit', async () => {
       const onSubmit = jest.fn()
       render(<CustomFormInstance onSubmit={onSubmit} />)
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
 
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalled()

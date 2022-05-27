@@ -6,6 +6,7 @@ import Form from '../Form'
 import ReactHookFormHandler from '../ReactHookFormHandler'
 
 type FormContextProps = {
+  children?: React.ReactNode
   formProps?: UseFormProps
   onSubmit?: SubmitHandler<any>
 }

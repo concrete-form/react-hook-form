@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/render-result-naming-convention */
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import YupTranslator from '@concrete-form/core/YupTranslator'
@@ -7,19 +8,22 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import renderFormAndGetHandler from '../testkit/renderFormAndGetHandler'
 import RequiredInput from '../testkit/RequiredInput'
 
+const wait = async (delay: number) => await new Promise(resolve => setTimeout(resolve, delay))
+
 describe('ReactHookFormHandler', () => {
   describe('getFormState', () => {
     it('returns isSubmitting=true when form is submitting', async () => {
-      const onSubmit = jest.fn()
+      const onSubmit = jest.fn(async () => await wait(50))
       const formHandler = renderFormAndGetHandler(undefined, undefined, onSubmit)
 
       expect(formHandler.getFormState().isSubmitting).toBe(false)
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
+
       expect(formHandler.getFormState().isSubmitting).toBe(true)
       await waitFor(() => {
-        expect(onSubmit).toHaveBeenCalled()
+        expect(formHandler.getFormState().isSubmitting).toBe(false)
       })
-      expect(formHandler.getFormState().isSubmitting).toBe(false)
+      expect(onSubmit).toHaveBeenCalled()
     })
 
     it('returns hasErrors=true when form has errors', async () => {
@@ -28,12 +32,12 @@ describe('ReactHookFormHandler', () => {
       const input = screen.getByRole('textbox')
 
       expect(formHandler.getFormState().hasErrors).toBe(false)
-      userEvent.click(input)
-      userEvent.click(document.body)
+      await userEvent.click(input)
+      await userEvent.click(document.body)
       await waitFor(() => {
         expect(formHandler.getFormState().hasErrors).toBe(true)
       })
-      userEvent.type(input, 'foo')
+      await userEvent.type(input, 'foo')
       await waitFor(() => {
         expect(formHandler.getFormState().hasErrors).toBe(false)
       })
@@ -53,7 +57,7 @@ describe('ReactHookFormHandler', () => {
         ref: expect.anything(),
       })
       expect(formHandler.getControlProps('foo').name).toBe(props.name)
-      userEvent.click(screen.getByRole('button', { name: 'submit' }))
+      await userEvent.click(screen.getByRole('button', { name: 'submit' }))
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({ foo: 'bar' }, expect.anything())
       })
@@ -89,12 +93,12 @@ describe('ReactHookFormHandler', () => {
   })
 
   describe('getControlState', () => {
-    it('returns control value', () => {
+    it('returns control value', async () => {
       const formHandler = renderFormAndGetHandler(<RequiredInput />, { defaultValues: { test: 'foo' } })
       const input = screen.getByRole('textbox')
       expect(formHandler.getControlState('test').value).toBe('foo')
-      userEvent.clear(input)
-      userEvent.type(input, 'bar')
+      await userEvent.clear(input)
+      await userEvent.type(input, 'bar')
       expect(formHandler.getControlState('test').value).toBe('bar')
     })
 
@@ -102,8 +106,8 @@ describe('ReactHookFormHandler', () => {
       const formHandler = renderFormAndGetHandler(<RequiredInput />)
       const input = screen.getByRole('textbox')
       expect(formHandler.getControlState('test').errors).toEqual([])
-      userEvent.click(input)
-      userEvent.click(document.body)
+      await userEvent.click(input)
+      await userEvent.click(document.body)
 
       await waitFor(() => {
         expect(formHandler.getControlState('test').errors).toHaveLength(1)
