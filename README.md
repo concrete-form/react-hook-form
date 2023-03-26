@@ -39,3 +39,7 @@ yarn add @concrete-form/react-hook-form
 # OR
 npm install @concrete-form/react-hook-form
 ```
+<a href="https://concrete-form.com/docs/getting-started/install" target="_blank">Check the installation tool</a>
+
+## Documentation
+https://concrete-form.com/docs/form/react-hook-form/api

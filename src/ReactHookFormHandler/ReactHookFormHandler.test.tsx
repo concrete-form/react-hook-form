@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import renderFormAndGetHandler from '../testkit/renderFormAndGetHandler'
 import RequiredInput from '../testkit/RequiredInput'
 
+
 const wait = async (delay: number) => await new Promise(resolve => setTimeout(resolve, delay))
 
 describe('ReactHookFormHandler', () => {
