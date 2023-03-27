@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/react-hook-form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Kevin Gilbert",
   "description": "React Hook Form implementation for Concrete form",
   "keywords": [
@@ -10,7 +10,7 @@
     "concrete-form"
   ],
   "repository": "concrete-form/react-hook-form",
-  "homepage": "https://github.com/concrete-form/react-hook-form",
+  "homepage": "https://concrete-form.com/docs/form/react-hook-form/intro",
   "bugs": "https://github.com/concrete-form/react-hook-form/issues",
   "private": false,
   "license": "MIT",
@@ -29,8 +29,6 @@
     "build:types": "tsc --project tsconfig.build.json",
     "build:prepare": "node scripts/prepareDist.js",
     "dev": "yarn build && concurrently --kill-others \"yarn build:esm --watch\" \"cd demo && yarn start\"",
-    "predeploy": "cd demo && yarn build",
-    "deploy": "gh-pages -d demo/build",
     "publish:dist": "yarn build && yarn publish dist --access public",
     "publish:code-coverage": "yarn test:coverage && cat ./coverage/lcov.info | coveralls",
     "test": "react-scripts test --watchAll=false",
@@ -39,13 +37,13 @@
     "lint": "eslint src",
     "lint:fix": "yarn lint --fix"
   },
-  "dependencies": {
-    "@concrete-form/core": "^1.0.2",
-    "babel-loader": "8.2.5"
-  },
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-hook-form": ">=7.0.0"
+  },
+  "dependencies": {
+    "@concrete-form/core": "^1.0.2",
+    "babel-loader": "8.2.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
@@ -53,7 +51,7 @@
     "@babel/plugin-transform-runtime": "^7.18.2",
     "@babel/plugin-transform-typescript": "^7.18.1",
     "@babel/runtime": "^7.18.3",
-    "@concrete-form/html5": "^0.0.17",
+    "@concrete-form/html5": "^1.0.0",
     "@hookform/resolvers": "^2.8.10",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -68,7 +66,6 @@
     "coveralls": "^3.1.1",
     "cross-env": "^7.0.3",
     "eslint-plugin-standard-cra": "^1.0.8",
-    "gh-pages": "^4.0.0",
     "joi": "^17.6.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
