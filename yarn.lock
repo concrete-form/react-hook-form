@@ -1102,10 +1102,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@concrete-form/core@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-1.0.3.tgz#020f2a362a017a6fcca7fba8e9c6fbab7de5fa6e"
-  integrity sha512-3zJZ8/fwVqppoJ4rRcVuuigKKyi1TYgBagDd4q9pDkGdcmOFK1oqJSoSLmqRLNZOSrIEYnIZHYVgOamx0E03NA==
+"@concrete-form/core@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-1.0.4.tgz#2aeba7164c9052d2dfe26324e546d16f5b8edeba"
+  integrity sha512-m15zyRr481tH4WV6SRzYZW7VUoJgLIVSgX0z9RpOXVkNkykTCmCpm9K3LP+s3Stl76mSCP7R38Cy9tRdrwxWSQ==
 
 "@concrete-form/html5@^1.0.0":
   version "1.0.0"
