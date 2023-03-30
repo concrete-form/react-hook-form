@@ -1,7 +1,6 @@
 /* eslint-disable testing-library/render-result-naming-convention */
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import YupTranslator from '@concrete-form/core/YupTranslator'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
@@ -145,10 +144,10 @@ describe('ReactHookFormHandler', () => {
     })
 
     it('handle arrays of errors', async () => {
-      const schema = new YupTranslator(Yup.object({
+      const schema = Yup.object({
         test: Yup.array().of(Yup.string().min(3, 'err1').max(3, 'err2')).min(1).required(),
-      }))
-      const formHandler = renderFormAndGetHandler(undefined, { criteriaMode: 'all', resolver: yupResolver(new YupTranslator(schema)) })
+      })
+      const formHandler = renderFormAndGetHandler(undefined, { criteriaMode: 'all', resolver: yupResolver(schema) })
       formHandler.getControlProps('test', false)
       formHandler.setFieldValue('test', ['fo', 'barr'], true)
 
@@ -158,10 +157,10 @@ describe('ReactHookFormHandler', () => {
     })
 
     it('ignores duplicated errors', async () => {
-      const schema = new YupTranslator(Yup.object({
+      const schema = Yup.object({
         test: Yup.array().of(Yup.string().min(3, 'err1')).min(1).required(),
-      }))
-      const formHandler = renderFormAndGetHandler(undefined, { criteriaMode: 'all', resolver: yupResolver(new YupTranslator(schema)) })
+      })
+      const formHandler = renderFormAndGetHandler(undefined, { criteriaMode: 'all', resolver: yupResolver(schema) })
       formHandler.getControlProps('test', false)
       formHandler.setFieldValue('test', ['fo', 'ba'], true)
 
