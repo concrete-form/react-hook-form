@@ -1102,15 +1102,15 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@concrete-form/core@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-1.0.4.tgz#2aeba7164c9052d2dfe26324e546d16f5b8edeba"
-  integrity sha512-m15zyRr481tH4WV6SRzYZW7VUoJgLIVSgX0z9RpOXVkNkykTCmCpm9K3LP+s3Stl76mSCP7R38Cy9tRdrwxWSQ==
+"@concrete-form/core@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@concrete-form/core/-/core-1.0.5.tgz#b79743671313ace459de09aaadd30a6b3c0e32bd"
+  integrity sha512-xxv5M6aVqM8eVJF0fgrQYK8VJFh9t2nlSshwav+8q8Z9zh/qvvTNvVzOa8zrNMJzcN9jiipy0rKPLmp6HHKkuw==
 
-"@concrete-form/html5@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@concrete-form/html5/-/html5-1.0.0.tgz#ddc4b3652f1ba3889e5512849fc580b81187b7c5"
-  integrity sha512-dr2ZMzfCNu36FHuq9HhrYtpiVkl0m0qX1HRvvTkMKV9VmsLPaHUL0GiQMSUGCbyYOd2aSjY5RGsrkQbfTD66zA==
+"@concrete-form/html5@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@concrete-form/html5/-/html5-1.0.6.tgz#5f68e2f3f4b85387463fb6c3908d021432622471"
+  integrity sha512-SlX/jT0rKgcpWew4d6Rk82djn9qqBAYorhab9brsfG0cwmx6XTNZ5doRr/kLD/g+szIJxqJltbwQ5I+sgjzCfg==
 
 "@csstools/normalize.css@*":
   version "12.0.0"

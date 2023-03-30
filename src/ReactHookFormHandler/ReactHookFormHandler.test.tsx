@@ -8,7 +8,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import renderFormAndGetHandler from '../testkit/renderFormAndGetHandler'
 import RequiredInput from '../testkit/RequiredInput'
 
-
 const wait = async (delay: number) => await new Promise(resolve => setTimeout(resolve, delay))
 
 describe('ReactHookFormHandler', () => {
@@ -46,10 +45,10 @@ describe('ReactHookFormHandler', () => {
   })
 
   describe('getControlProps', () => {
-    it('register field on the form the first and returns it after', async () => {
+    it('register field on the form first and returns it after', async () => {
       const onSubmit = jest.fn()
       const formHandler = renderFormAndGetHandler(undefined, undefined, onSubmit)
-      const props = formHandler.getControlProps('foo', { value: 'bar' })
+      const props = formHandler.getControlProps('foo', false, { value: 'bar' })
 
       expect(props).toEqual({
         name: 'foo',
@@ -57,7 +56,7 @@ describe('ReactHookFormHandler', () => {
         onBlur: expect.anything(),
         ref: expect.anything(),
       })
-      expect(formHandler.getControlProps('foo').name).toBe(props.name)
+      expect(formHandler.getControlProps('foo', false).name).toBe(props.name)
       await userEvent.click(screen.getByRole('button', { name: 'submit' }))
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith({ foo: 'bar' }, expect.anything())
@@ -66,23 +65,41 @@ describe('ReactHookFormHandler', () => {
 
     it('forwards options to react-hook-form', async () => {
       const formHandler = renderFormAndGetHandler()
-      const props = formHandler.getControlProps('foo', { disabled: true })
+      const props = formHandler.getControlProps('foo', false, { disabled: true })
 
       expect(props).toHaveProperty('disabled', true)
+    })
+
+    it('generate the correct default value for groups', async () => {
+      const formHandler = renderFormAndGetHandler()
+      formHandler.getControlProps('group', true)
+      formHandler.setFieldValue('group', false)
+      expect(formHandler.getControlState('group').value).toBe(undefined)
+
+      formHandler.setFieldValue('group', ['foo'])
+      expect(formHandler.getControlState('group').value).toEqual(['foo'])
+
+      formHandler.getControlProps('notGroup', false)
+      formHandler.setFieldValue('notGroup', false)
+      expect(formHandler.getControlState('notGroup').value).toBe(false)
+
+      formHandler.getControlProps('custom', true, { setValueAs: () => 'custom value' })
+      formHandler.setFieldValue('custom', false)
+      expect(formHandler.getControlState('custom').value).toBe('custom value')
     })
   })
 
   describe('setFieldValue', () => {
     it('set field value', async () => {
       const formHandler = renderFormAndGetHandler()
-      formHandler.getControlProps('foo', { value: 'foo' })
+      formHandler.getControlProps('foo', false, { value: 'foo' })
       formHandler.setFieldValue('foo', 'bar')
       expect(formHandler.getControlState('foo').value).toBe('bar')
     })
 
     it('validate the field when updating the value', async () => {
       const formHandler = renderFormAndGetHandler()
-      formHandler.getControlProps('foo', { minLength: 4 })
+      formHandler.getControlProps('foo', false, { minLength: 4 })
       formHandler.setFieldValue('foo', 'bar', false)
       expect(formHandler.getControlState('foo').errors).toHaveLength(0)
       formHandler.setFieldValue('foo', 'bar', true)
@@ -119,7 +136,7 @@ describe('ReactHookFormHandler', () => {
   describe('React hook errors formatting', () => {
     it('returns all errors', async () => {
       const formHandler = renderFormAndGetHandler(undefined, { criteriaMode: 'all' })
-      formHandler.getControlProps('multiple', { minLength: 5, pattern: /^[a-z]*$/ })
+      formHandler.getControlProps('multiple', false, { minLength: 5, pattern: /^[a-z]*$/ })
       formHandler.setFieldValue('multiple', '123', true)
 
       await waitFor(() => {
@@ -132,7 +149,7 @@ describe('ReactHookFormHandler', () => {
         test: Yup.array().of(Yup.string().min(3, 'err1').max(3, 'err2')).min(1).required(),
       }))
       const formHandler = renderFormAndGetHandler(undefined, { criteriaMode: 'all', resolver: yupResolver(new YupTranslator(schema)) })
-      formHandler.getControlProps('test')
+      formHandler.getControlProps('test', false)
       formHandler.setFieldValue('test', ['fo', 'barr'], true)
 
       await waitFor(() => {
@@ -145,7 +162,7 @@ describe('ReactHookFormHandler', () => {
         test: Yup.array().of(Yup.string().min(3, 'err1')).min(1).required(),
       }))
       const formHandler = renderFormAndGetHandler(undefined, { criteriaMode: 'all', resolver: yupResolver(new YupTranslator(schema)) })
-      formHandler.getControlProps('test')
+      formHandler.getControlProps('test', false)
       formHandler.setFieldValue('test', ['fo', 'ba'], true)
 
       await waitFor(() => {
@@ -156,7 +173,7 @@ describe('ReactHookFormHandler', () => {
     describe('Errors without message', () => {
       it('converts required validation', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('required', { required: true })
+        formHandler.getControlProps('required', false, { required: true })
         formHandler.setFieldValue('required', '', true)
 
         await waitFor(() => {
@@ -168,7 +185,7 @@ describe('ReactHookFormHandler', () => {
 
       it('converts minLength validation', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('minLength', { minLength: 2 })
+        formHandler.getControlProps('minLength', false, { minLength: 2 })
         formHandler.setFieldValue('minLength', 'f', true)
 
         await waitFor(() => {
@@ -180,7 +197,7 @@ describe('ReactHookFormHandler', () => {
 
       it('converts maxLength validation', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('maxLength', { maxLength: 2 })
+        formHandler.getControlProps('maxLength', false, { maxLength: 2 })
         formHandler.setFieldValue('maxLength', 'foo', true)
 
         await waitFor(() => {
@@ -192,7 +209,7 @@ describe('ReactHookFormHandler', () => {
 
       it('converts min validation', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('min', { min: 2 })
+        formHandler.getControlProps('min', false, { min: 2 })
         formHandler.setFieldValue('min', 1, true)
 
         await waitFor(() => {
@@ -204,7 +221,7 @@ describe('ReactHookFormHandler', () => {
 
       it('converts max validation', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('max', { max: 2 })
+        formHandler.getControlProps('max', false, { max: 2 })
         formHandler.setFieldValue('max', 3, true)
 
         await waitFor(() => {
@@ -216,7 +233,7 @@ describe('ReactHookFormHandler', () => {
 
       it('converts pattern validation', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('pattern', { pattern: /^[a-z]+$/ })
+        formHandler.getControlProps('pattern', false, { pattern: /^[a-z]+$/ })
         formHandler.setFieldValue('pattern', 'a1b', true)
 
         await waitFor(() => {
@@ -228,7 +245,7 @@ describe('ReactHookFormHandler', () => {
 
       it('converts custom validation', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('custom', { validate: (value: string) => value === 'foo' })
+        formHandler.getControlProps('custom', false, { validate: (value: string) => value === 'foo' })
         formHandler.setFieldValue('custom', 'bar', true)
 
         await waitFor(() => {
@@ -242,7 +259,7 @@ describe('ReactHookFormHandler', () => {
     describe('Errors with message', () => {
       it('keeps required validation message', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('required', { required: 'custom' })
+        formHandler.getControlProps('required', false, { required: 'custom' })
         formHandler.setFieldValue('required', '', true)
 
         await waitFor(() => {
@@ -252,7 +269,7 @@ describe('ReactHookFormHandler', () => {
 
       it('keeps minLength validation message', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('minLength', { minLength: { value: 2, message: 'custom' } })
+        formHandler.getControlProps('minLength', false, { minLength: { value: 2, message: 'custom' } })
         formHandler.setFieldValue('minLength', 'f', true)
 
         await waitFor(() => {
@@ -262,7 +279,7 @@ describe('ReactHookFormHandler', () => {
 
       it('keeps maxLength validation message', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('maxLength', { maxLength: { value: 2, message: 'custom' } })
+        formHandler.getControlProps('maxLength', false, { maxLength: { value: 2, message: 'custom' } })
         formHandler.setFieldValue('maxLength', 'foo', true)
 
         await waitFor(() => {
@@ -272,7 +289,7 @@ describe('ReactHookFormHandler', () => {
 
       it('keeps min validation message', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('min', { min: { value: 2, message: 'custom' } })
+        formHandler.getControlProps('min', false, { min: { value: 2, message: 'custom' } })
         formHandler.setFieldValue('min', 1, true)
 
         await waitFor(() => {
@@ -282,7 +299,7 @@ describe('ReactHookFormHandler', () => {
 
       it('kleeps max validation message', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('max', { max: { value: 2, message: 'custom' } })
+        formHandler.getControlProps('max', false, { max: { value: 2, message: 'custom' } })
         formHandler.setFieldValue('max', 3, true)
 
         await waitFor(() => {
@@ -292,7 +309,7 @@ describe('ReactHookFormHandler', () => {
 
       it('keeps pattern validation message', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('pattern', { pattern: { value: /^[a-z]+$/, message: 'custom' } })
+        formHandler.getControlProps('pattern', false, { pattern: { value: /^[a-z]+$/, message: 'custom' } })
         formHandler.setFieldValue('pattern', 'a1b', true)
 
         await waitFor(() => {
@@ -302,7 +319,7 @@ describe('ReactHookFormHandler', () => {
 
       it('keeps custom validation message', async () => {
         const formHandler = renderFormAndGetHandler()
-        formHandler.getControlProps('custom', { validate: (value: string) => value === 'foo' ? true : 'custom' })
+        formHandler.getControlProps('custom', false, { validate: (value: string) => value === 'foo' ? true : 'custom' })
         formHandler.setFieldValue('custom', 'bar', true)
 
         await waitFor(() => {

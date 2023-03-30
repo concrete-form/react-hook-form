@@ -15,7 +15,10 @@ export default class ReactHookFormHandler implements FormHandler {
     }
   }
 
-  public getControlProps (name: string, options?: any) {
+  public getControlProps (name: string, group: boolean, options: any = {}) {
+    if (group && !options.setValueAs) {
+      options.setValueAs = (value: any) => value === false ? undefined : value
+    }
     this.cachedControlOptions[name] = options
     return this.reactHookFormContext.register(name, options)
   }
