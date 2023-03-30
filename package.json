@@ -1,6 +1,6 @@
 {
   "name": "@concrete-form/react-hook-form",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Kevin Gilbert",
   "description": "React Hook Form implementation for Concrete form",
   "keywords": [
@@ -42,7 +42,7 @@
     "react-hook-form": ">=7.0.0"
   },
   "dependencies": {
-    "@concrete-form/core": "^1.0.5",
+    "@concrete-form/core": "^1.0.6",
     "babel-loader": "8.2.5"
   },
   "devDependencies": {
